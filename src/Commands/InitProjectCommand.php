@@ -16,21 +16,30 @@ class InitProjectCommand extends Command
 
         // สร้าง layout
         $layoutPath = resource_path('views/layouts/index.blade.php');
-          File::ensureDirectoryExists(dirname($layoutPath));
+        File::ensureDirectoryExists(dirname($layoutPath));
         if (!File::exists($layoutPath)) {
             File::ensureDirectoryExists(dirname($layoutPath));
             File::copy(__DIR__ . '/../stubs/layout.blade.php', $layoutPath);
-            $this->info('Created: layouts/index.blade.php');
+            $this->info('Created: views/layouts/index.blade.php');
         }
 
         // สร้าง home page       
         $homePath = resource_path('views/pages/home/index.blade.php');
-         // สร้างโฟลเดอร์หากยังไม่มี
+        // สร้างโฟลเดอร์หากยังไม่มี
         File::ensureDirectoryExists(dirname($homePath));
         if (!File::exists($homePath)) {
             File::copy(__DIR__ . '/../stubs/home.blade.php', $homePath);
-            $this->info('Created: home.blade.php');
+            $this->info('Created: views/pages/home/index.blade.php');
         }
+
+        $loginPath = resource_path('views/pages/login/index.blade.php');
+        // สร้างโฟลเดอร์หากยังไม่มี
+        File::ensureDirectoryExists(dirname($homePath));
+        if (!File::exists($homePath)) {
+            File::copy(__DIR__ . '/../stubs/login.blade.php', $homePath);
+            $this->info('Created: views/pages/login/index.blade.php');
+        }
+
 
         // Copy IndexController
         $controllerPath = app_path('Http/Controllers/IndexController.php');
