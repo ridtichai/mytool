@@ -12,16 +12,21 @@ class InitProjectCommand extends Command
 
     public function handle()
     {
+        $this->info("✅ เริ่มต้นติดตั้ง controller , layout และ page");
+
         // สร้าง layout
         $layoutPath = resource_path('views/layouts/index.blade.php');
+          File::ensureDirectoryExists(dirname($layoutPath));
         if (!File::exists($layoutPath)) {
             File::ensureDirectoryExists(dirname($layoutPath));
             File::copy(__DIR__ . '/../stubs/layout.blade.php', $layoutPath);
             $this->info('Created: layouts/index.blade.php');
         }
 
-        // สร้าง home page
-        $homePath = resource_path('views/home/index.blade.php');
+        // สร้าง home page       
+        $homePath = resource_path('views/pages/home/index.blade.php');
+         // สร้างโฟลเดอร์หากยังไม่มี
+        File::ensureDirectoryExists(dirname($homePath));
         if (!File::exists($homePath)) {
             File::copy(__DIR__ . '/../stubs/home.blade.php', $homePath);
             $this->info('Created: home.blade.php');
@@ -46,5 +51,7 @@ class InitProjectCommand extends Command
         $routeStub = file_get_contents(__DIR__ . '/../stubs/web.php');
         File::append($routePath, "\n\n" . $routeStub);
         $this->info('Updated: web.php');
+
+        $this->info("🎉 ติดตั้งเสร็จแล้ว!");
     }
 }
