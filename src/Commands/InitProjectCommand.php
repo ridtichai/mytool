@@ -34,9 +34,9 @@ class InitProjectCommand extends Command
 
         $loginPath = resource_path('views/pages/login/index.blade.php');
         // สร้างโฟลเดอร์หากยังไม่มี
-        File::ensureDirectoryExists(dirname($homePath));
-        if (!File::exists($homePath)) {
-            File::copy(__DIR__ . '/../stubs/login.blade.php', $homePath);
+        File::ensureDirectoryExists(dirname($loginPath));
+        if (!File::exists($loginPath)) {
+            File::copy(__DIR__ . '/../stubs/login.blade.php', $loginPath);
             $this->info('Created: views/pages/login/index.blade.php');
         }
 
