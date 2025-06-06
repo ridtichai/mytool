@@ -3,7 +3,7 @@
 namespace ridtichai\ProjectScaffold;
 
 use Illuminate\Support\ServiceProvider;
-use YourName\ProjectScaffold\Commands\InitProjectCommand;
+use ridtichai\ProjectScaffold\Commands\InitProjectCommand;
 
 class MyToolServiceProvider extends ServiceProvider
 {
