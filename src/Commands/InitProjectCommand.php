@@ -27,13 +27,6 @@ class InitProjectCommand extends Command
             $this->info('Created: home.blade.php');
         }
 
-        // เพิ่ม route
-        $routePath = base_path('routes/web.php');
-        $routeStub = file_get_contents(__DIR__ . '/../stubs/web.php');
-        File::append($routePath, "\n\n" . $routeStub);
-        $this->info('Updated: web.php');
-
-
         // Copy IndexController
         $controllerPath = app_path('Http/Controllers/IndexController.php');
         if (!File::exists($controllerPath)) {
@@ -41,8 +34,14 @@ class InitProjectCommand extends Command
             $this->info('Created: IndexController.php');
         }
 
+        // เพิ่ม route
+        $routePath = base_path('routes/web.php');
+        $routeStub = file_get_contents(__DIR__ . '/../stubs/web.php');
+        File::append($routePath, "\n\n" . $routeStub);
+
         // เพิ่ม route ที่ใช้ Controller ก็ได้เช่น
         $route = "Route::get('/', [App\\Http\\Controllers\\IndexController::class, 'index']);";
         File::append(base_path('routes/web.php'), "\n\n" . $route);
+        $this->info('Updated: web.php');
     }
 }

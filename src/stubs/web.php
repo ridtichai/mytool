@@ -1,5 +1,3 @@
-<?php
-
 Route::get('/', function () {
-    return view('home');
+return view('home');
 });
