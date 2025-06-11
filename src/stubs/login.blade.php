@@ -132,8 +132,7 @@
                 <h1 class="h3 mb-3 fw-normal">เข้าสู่ระบบ Web</h1>
 
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="username" name="username" value=""
-                        required>
+                    <input type="text" class="form-control" id="username" name="username" value="" required>
                     <label for="username">บัญชีผู้ใช้งาน</label>
                 </div>
                 <div class="form-floating">
@@ -143,6 +142,10 @@
 
 
                 <button class="btn btn-primary w-100 py-2" type="submit">เข้าสู่ระบบ</button>
+
+                <a
+                    href="https://domainapi/oauth2/authorize?response_type=code&client_id=c02cc2130a15083e9344c1c268ca8202&redirect_uri=http://127.0.0.1:8230&scope=username+name+lastname&state=xxxxxxxx">เข้าด้วยระบบ
+                    RMUTT</a>
 
             </form>
         </main>

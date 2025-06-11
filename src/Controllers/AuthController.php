@@ -23,8 +23,38 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        //   dd($request->all());
 
+        if (isset($_GET['code'])) {
+
+            // กำหนดข้อมูลไว้ด้านนอกฟังก์ชัน
+            $data = [
+                "grant_type"    => "authorization_code",
+                "client_id"     => "xxxxx", // เปลี่ยนเป็น client_id ของคุณ
+                "client_secret" => "xxxxx", // เปลี่ยนเป็น client_secret ของคุณ
+                "code"          => $_GET['code'],
+                "redirect_uri"  => "http://localhost/testoauth2/callback"  // เปลี่ยนเป็น url callback ของคุณ
+            ];
+
+            // ส่ง $data เข้าไปในฟังก์ชัน
+            $tokenData = exchangeCodeForToken($data);
+
+            if (isset($tokenData['error'])) {
+                echo "Error : " . $tokenData['error'];
+            } else if (isset($tokenData['access_token'])) {
+                $userInfo = getUserInfo($tokenData['access_token']);
+                echo "<pre>";
+                print_r($userInfo);
+                echo "</pre>";
+            } else {
+                echo "Unexpected response from token endpoint.";
+            }
+        } else {
+            echo "คุณปฏิเสธ ที่จะให้แอปพลิเคชันเข้าถึงข้อมูลของคุณ";
+        }
+
+
+        //   dd($request->all());
+/*
         $check_user = User::where('username', trim($request->username))->first();
 
         if (Auth::loginUsingId($check_user->id)) {
@@ -40,7 +70,8 @@ class AuthController extends Controller
         } else {
 
             return redirect()->route('login')->withErrors('เกิดข้อผิดพลาด');
-        }
+        }*/
+        
     }
 
     public function logout(Request $request)

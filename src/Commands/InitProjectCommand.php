@@ -55,6 +55,13 @@ class InitProjectCommand extends Command
             $this->info('Created: AuthController.php');
         }
 
+        $LibsPath = app_path('app/Libs/functions.php');
+        File::ensureDirectoryExists(dirname($LibsPath));
+        if (!File::exists($LibsPath)) {
+            File::copy(__DIR__ . '/../Libs/functions.php', $LibsPath);
+            $this->info('Created: functions.php');
+        }
+
         // เพิ่ม route
         $routePath = base_path('routes/web.php');
         $routeStub = file_get_contents(__DIR__ . '/../stubs/web.php');
