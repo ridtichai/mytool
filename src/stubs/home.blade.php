@@ -3,7 +3,11 @@
 
     <h1>Home</h1>
 
-    <a href="{{ route('login') }}">Login</a>
+    @if (is_null(Auth::user()))
+        <a href="{{ route('login') }}">Login</a>
+    @else
+        <a href="{{ route('logout') }}">Logout</a>
+    @endif
 
 @endsection
 

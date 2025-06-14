@@ -1,9 +1,8 @@
 <?php
 
 if (! function_exists('exchangeCodeForToken')) {
-    function exchangeCodeForToken($data)
+    function exchangeCodeForToken($url, $data)
     {
-        $url = "https://auth.rmutt.ac.th/oauth2";
 
         $ch = curl_init($url . '/token');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -26,9 +25,8 @@ if (! function_exists('exchangeCodeForToken')) {
 }
 
 if (! function_exists('getUserInfo')) {
-    function getUserInfo($access_token)
+    function getUserInfo($url, $access_token)
     {
-        $url = "https://auth.rmutt.ac.th/oauth2";
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -48,6 +46,6 @@ if (! function_exists('getUserInfo')) {
 
         $response = curl_exec($curl);
         curl_close($curl);
-        return json_decode($response, true);
+        return json_decode($response);
     }
 }
