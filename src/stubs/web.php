@@ -1,4 +1,6 @@
 
+/**************** add route ********************/
+
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');

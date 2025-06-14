@@ -55,7 +55,7 @@ class InitProjectCommand extends Command
             $this->info('Created: AuthController.php');
         }
 
-        $LibsPath = app_path('app/Libs/functions.php');
+        $LibsPath = app_path('Libs/functions.php');
         File::ensureDirectoryExists(dirname($LibsPath));
         if (!File::exists($LibsPath)) {
             File::copy(__DIR__ . '/../Libs/functions.php', $LibsPath);
