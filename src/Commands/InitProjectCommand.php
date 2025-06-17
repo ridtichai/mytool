@@ -58,9 +58,67 @@ class InitProjectCommand extends Command
         $LibsPath = app_path('Libs/functions.php');
         File::ensureDirectoryExists(dirname($LibsPath));
         if (!File::exists($LibsPath)) {
-            File::copy(__DIR__ . '/../Libs/functions.php', $LibsPath);
+            File::copy(__DIR__ . '/../libs/functions.php', $LibsPath);
             $this->info('Created: functions.php');
         }
+
+        $templatePath = public_path('assets/demo/chart-area-demo.js');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/assets/demo/chart-area-demo.js', $templatePath);
+            $this->info('Created: chart-area-demo.js');
+        }
+
+        $templatePath = public_path('assets/demo/chart-bar-demo.js');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/assets/demo/chart-bar-demo.js', $templatePath);
+            $this->info('Created: chart-bar-demo.js');
+        }
+
+        $templatePath = public_path('assets/demo/chart-pie-demo.js');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/assets/demo/chart-pie-demo.js', $templatePath);
+            $this->info('Created: chart-pie-demo.js');
+        }
+
+
+        $templatePath = public_path('assets/demo/datatables-demo.js');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/assets/demo/datatables-demo.js', $templatePath);
+            $this->info('Created: datatables-demo.js');
+        }
+
+        $templatePath = public_path('assets/img/error-404-monochrome.svg');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/assets/img/error-404-monochrome.svg', $templatePath);
+            $this->info('Created: error-404-monochrome.svg');
+        }
+
+        $templatePath = public_path('css/styles.css');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/css/styles.css', $templatePath);
+            $this->info('Created: styles.css');
+        }
+
+        $templatePath = public_path('js/datatables-simple-demo.js');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/js/datatables-simple-demo.js', $templatePath);
+            $this->info('Created: datatables-simple-demo.js');
+        }
+
+        $templatePath = public_path('js/scripts.js');
+        File::ensureDirectoryExists(dirname($templatePath));
+        if (!File::exists($templatePath)) {
+            File::copy(__DIR__ . '/../template/js/scripts.js', $templatePath);
+            $this->info('Created: scripts.js');
+        }
+
 
         // เพิ่ม route
         $routePath = base_path('routes/web.php');
